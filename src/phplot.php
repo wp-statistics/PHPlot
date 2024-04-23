@@ -7533,7 +7533,14 @@ class phplot
                             } else {
                                 $color = $this->ndx_text_color;
                             }
-                            ImageRectangle($this->img, $dot_left_x, $y1, $dot_right_x, $y2, $color);
+                            ImageRectangle(
+                                $this->img, 
+                                (int) $dot_left_x, 
+                                (int) $y1, 
+                                (int) $dot_right_x, 
+                                (int) $y2, 
+                                (int) $color
+                            );
                         }
                 }
                 if (++$color_index > $max_color_index) {
