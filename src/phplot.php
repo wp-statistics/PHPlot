@@ -7878,7 +7878,12 @@ class phplot
             } else { // Suppress top shading (Note shade_top==FALSE && shade_side==FALSE is not allowed)
                 $pts = array($x2, $y2, $x2, $y1, $x2 + $shade, $y1 - $shade, $x2 + $shade, $y2 - $shade);
             }
-            ImageFilledPolygon($this->img, $pts, count($pts) / 2, $shade_color);
+
+            if (phpversion() > 8.0) {
+                ImageFilledPolygon($this->img, $pts, $shade_color);
+            } else {
+                ImageFilledPolygon($this->img, $pts, count($pts) / 2, $shade_color);
+            }
         }
 
         // Draw a border around the bar, if enabled.
